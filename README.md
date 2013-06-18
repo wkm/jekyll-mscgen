@@ -1,24 +1,45 @@
-# Jekyll::Mscgen
+# jekyll-mscgen
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'jekyll-mscgen'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install jekyll-mscgen
+A Jekyll plugin for generating message sequence charts using the `mscgen`
+tool.
 
 ## Usage
+You need to have `mscgen` installed (it's available through homebrew).
 
-TODO: Write usage instructions here
+Expose the mscgen plugin to jekyll through a `_plugins/gems.rb` type file:
+
+	require 'jekyll-mscgen'
+
+Then you can create a chart as so:
+
+	{% mscgen %}
+	hscale = "0.7";
+	# arcgradient = "2";
+
+	swap1,host1,host2,swap2;
+	|||;
+
+	# proposal
+	--- [ label=" attempt swap " ];
+
+	swap1->host1 [ label="propose swap1" ];
+	swap1<-host1 [ label="ok" ];
+
+	# ...
+	{% endmscgen %}
+
+Generally you want to use CSS to add some styling, for example:
+
+	svg {
+		line {
+			color: #333;
+		}
+	}
+
+But expand as you wish:
+
+![Image](https://raw.github.com/wkm/jekyll-mscgen/master/doc/samplemsc.png)
+
 
 ## Contributing
 
