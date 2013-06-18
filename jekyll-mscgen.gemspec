@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Jekyll::Mscgen::VERSION
   spec.authors       = ["Wiktor Macura"]
   spec.email         = ["wmacura@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{mscgen integration for jekyll to make message sequence charts}
+  spec.summary       = %q{mscgen integration for jekyll to make message sequence charts}
+  spec.homepage      = "http://github.com/wkm/jekyll-mscgen"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
