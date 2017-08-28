@@ -5,7 +5,7 @@ require 'cgi'
 
 module Jekyll
   # defaults which get stripped out
-  class MscgenTag < Liquid::Tag
+  class MscgenBlock < Liquid::Block
     def initialize(tag_name, text, tokens)
       super
     end
@@ -23,7 +23,7 @@ module Jekyll
     end
 
     def render(context)
-      @text = @nodelist.join('')
+      @text = super
       @text = "msc {\n #{@text} \n}"
 
       Open3.popen3('mscgen -i- -o- -T svg') do |stdin,out,err|
@@ -55,4 +55,4 @@ module Jekyll
 end
 
 
-Liquid::Template.register_tag('mscgen', Jekyll::MscgenTag)
+Liquid::Template.register_tag('mscgen', Jekyll::MscgenBlock)
