@@ -5,7 +5,7 @@ require 'cgi'
 
 module Jekyll
   # defaults which get stripped out
-  class MscgenBlock < Liquid::Block
+  class MscgenTag < Liquid::Tag
     def initialize(tag_name, text, tokens)
       super
     end
@@ -43,7 +43,7 @@ module Jekyll
               output = CGI.escapeHTML(output)
             end
           end
-        
+
           output = output.lines.drop(2).join('')
           output = purify(output)
 
@@ -55,4 +55,4 @@ module Jekyll
 end
 
 
-Liquid::Template.register_tag('mscgen', Jekyll::MscgenBlock)
+Liquid::Template.register_tag('mscgen', Jekyll::MscgenTag)
